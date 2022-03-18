@@ -8,8 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
-@Table(name = "tb_tecnico")	
+@Table(name = "tb_tecnico")
 public class Tecnico implements Serializable {
 	private static final long serialVersionUID = 1L;
 

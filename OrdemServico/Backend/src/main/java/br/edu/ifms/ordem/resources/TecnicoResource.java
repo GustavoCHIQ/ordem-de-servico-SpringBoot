@@ -1,23 +1,26 @@
 package br.edu.ifms.ordem.resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifms.ordem.entities.Tecnico;
+import br.edu.ifms.ordem.services.TecnicoService;
 
 @RestController
 @RequestMapping(value = "/tecnicos")
 public class TecnicoResource {
+
+	@Autowired
+	private TecnicoService service;
+
 	@GetMapping
 	public ResponseEntity<List<Tecnico>> findAll() {
-		List<Tecnico> list = new ArrayList<>();
-		list.add(new Tecnico(1L, "Luis Gustavo", "6734615952", "luis@gmail.com", "123456"));
-		list.add(new Tecnico(2L, "Jose da Silva", "34618748", "josesilva@hotmail.com", "jose471436"));
+		List<Tecnico> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 }
