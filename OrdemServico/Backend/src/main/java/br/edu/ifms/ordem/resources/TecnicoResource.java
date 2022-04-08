@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifms.ordem.dto.TecnicoDTO;
 import br.edu.ifms.ordem.services.TecnicoService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping(value = "/tecnicos")
@@ -28,6 +30,12 @@ public class TecnicoResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<TecnicoDTO> findById(@PathVariable Long id) {
 		TecnicoDTO dto = service.findById(id);
+		return ResponseEntity.ok().body(dto);
+	}
+
+	@PostMapping
+	public ResponseEntity<TecnicoDTO> insert(@RequestBody TecnicoDTO dto) {
+		dto = service.insert(dto);
 		return ResponseEntity.ok().body(dto);
 	}
 }

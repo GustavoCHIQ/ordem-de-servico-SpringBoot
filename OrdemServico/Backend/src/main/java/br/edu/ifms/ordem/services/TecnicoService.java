@@ -25,9 +25,21 @@ public class TecnicoService {
 		return list.stream().map(t -> new TecnicoDTO(t)).collect(Collectors.toList());
 	}
 
+	@Transactional(readOnly = true)
 	public TecnicoDTO findById(Long id) {
 		Optional<Tecnico> obj = repository.findById(id);
 		Tecnico entity = obj.orElseThrow(() -> new EntityNotFoundExcepetion("Tecnico não encontrado"));
+		return new TecnicoDTO(entity);
+	}
+
+	@Transactional
+	public TecnicoDTO insert(TecnicoDTO dto) {
+		Tecnico entity = new Tecnico();
+		entity.setNome(dto.getNome());
+		entity.setTelefone(dto.getTelefone());
+		entity.setEmail(dto.getEmail());
+		entity.setSenha(dto.getSenha());
+		entity = repository.save(entity);
 		return new TecnicoDTO(entity);
 	}
 }
