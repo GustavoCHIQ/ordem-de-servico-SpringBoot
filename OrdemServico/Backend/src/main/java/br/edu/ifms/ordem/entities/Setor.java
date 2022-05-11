@@ -9,38 +9,42 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_tecnico")
-public class Tecnico implements Serializable {
+@Table(name = "tb_setor")
+public class Setor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto incremento
 	private Long id;
+	
+	private String sigla;
 	private String nome;
-	private String telefone;
 	private String email;
-	private String senha;
+	private String telefone;
+	private String coordenador;
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant createdAt;
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant updatedAt;
-
-	public Tecnico() {
+	
+	public Setor() {
 
 	}
 
-	public Tecnico(Long id, String nome, String telefone, String email, String senha) {
+	public Setor(Long id, String sigla, String nome, String email, String telefone, String coordenador) {
 		this.id = id;
+		this.sigla = sigla;
 		this.nome = nome;
-		this.telefone = telefone;
 		this.email = email;
-		this.senha = senha;
+		this.telefone = telefone;
+		this.coordenador = coordenador;
 	}
 
 	public Long getId() {
@@ -75,12 +79,20 @@ public class Tecnico implements Serializable {
 		this.email = email;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getSigla() {
+		return sigla;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
+	}
+
+	public String getCoordenador() {
+		return coordenador;
+	}
+
+	public void setCoordenador(String coordenador) {
+		this.coordenador = coordenador;
 	}
 
 	public Instant getCreatedAt() {
@@ -114,8 +126,7 @@ public class Tecnico implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Tecnico other = (Tecnico) obj;
+		Setor other = (Setor) obj;
 		return Objects.equals(id, other.id);
 	}
-
 }

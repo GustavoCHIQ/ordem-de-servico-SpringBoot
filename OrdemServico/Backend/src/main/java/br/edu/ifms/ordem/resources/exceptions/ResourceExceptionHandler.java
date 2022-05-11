@@ -9,19 +9,41 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import br.edu.ifms.ordem.services.exceptions.EntityNotFoundExcepetion;
+import br.edu.ifms.ordem.services.exceptions.ResourceNotFoundException;
+import br.edu.ifms.ordem.services.exceptions.DataBaseException;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
-    @ExceptionHandler(EntityNotFoundExcepetion.class)
-    public ResponseEntity<StandartError> entityNotFound(EntityNotFoundExcepetion e, HttpServletRequest request) {
-        StandartError error = new StandartError();
-        error.setTimeStamp(Instant.now());
-        error.setError("Recurso não encontrado");
-        error.setMessage(e.getMessage());
-        error.setStatus(HttpStatus.NOT_FOUND.value());
-        error.setPath(request.getRequestURI());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(error);
-    }
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<StandartError> entityNotFound(
+			ResourceNotFoundException e, HttpServletRequest request){
+		
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		
+		StandartError error = new StandartError();
+		error.setTimestamp(Instant.now());
+		error.setStatus(status.value());
+		error.setError("Recurso não encontrado");
+		error.setMessage(e.getMessage());
+		error.setPath(request.getRequestURI());
+		
+		return ResponseEntity.status(status).body(error);
+	}
+	
+	@ExceptionHandler(DataBaseException.class)
+	public ResponseEntity<StandartError> database(
+			DataBaseException e, HttpServletRequest request){
+		
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		
+		StandartError error = new StandartError();
+		error.setTimestamp(Instant.now());
+		error.setStatus(status.value());
+		error.setError("Database exception");
+		error.setMessage(e.getMessage());
+		error.setPath(request.getRequestURI());
+		
+		return ResponseEntity.status(status).body(error);
+	}
 }

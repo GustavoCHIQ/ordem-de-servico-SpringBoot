@@ -4,57 +4,56 @@ import java.io.Serializable;
 import java.time.Instant;
 
 public class StandartError implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1L;
+	private Instant timestamp;
+	private Integer status;
+	private String error;
+	private String path;
+	private String message;
 
-    private Instant timeStamp;
-    private Integer status;
-    private String message;
-    private String error;
-    private String path;
+	public StandartError() {
+		// TODO Auto-generated constructor stub
+	}
 
-    public StandartError() {
+	public Instant getTimestamp() {
+		return timestamp;
+	}
 
-    }
+	public void setTimestamp(Instant timestamp) {
+		this.timestamp = timestamp;
+	}
 
-    public Instant getTimeStamp() {
-        return timeStamp;
-    }
+	public Integer getStatus() {
+		return status;
+	}
 
-    public void setTimeStamp(Instant timeStamp) {
-        this.timeStamp = timeStamp;
-    }
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
-    public Integer getStatus() {
-        return status;
-    }
+	public String getError() {
+		return error;
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	public void setError(String error) {
+		this.error = error;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public String getPath() {
+		return path;
+	}
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+	public void setPath(String path) {
+		this.path = path;
+	}
 
-    public String getError() {
-        return error;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 }

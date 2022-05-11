@@ -14,59 +14,61 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.edu.ifms.ordem.dto.TecnicoDTO;
-import br.edu.ifms.ordem.entities.Tecnico;
-import br.edu.ifms.ordem.repositories.TecnicoRepository;
+import br.edu.ifms.ordem.dto.SetorDTO;
+import br.edu.ifms.ordem.entities.Setor;
+import br.edu.ifms.ordem.repositories.SetorRepository;
 import br.edu.ifms.ordem.services.exceptions.DataBaseException;
 import br.edu.ifms.ordem.services.exceptions.ResourceNotFoundException;
 
 @Service
-public class TecnicoService {
+public class SetorService {
 
 	@Autowired
-	private TecnicoRepository repository;
+	private SetorRepository repository;
 
 	@Transactional(readOnly = true)
-	public List<TecnicoDTO> findAll() {
-		List<Tecnico> list = repository.findAll();
-		return list.stream().map(t -> new TecnicoDTO(t)).collect(Collectors.toList());
+	public List<SetorDTO> findAll() {
+		List<Setor> list = repository.findAll();
+		return list.stream().map(t -> new SetorDTO(t)).collect(Collectors.toList());
 	}
 
 	@Transactional(readOnly = true)
-	public Page<TecnicoDTO> findAllPaged(PageRequest pageRequest) {
-		Page<Tecnico> list = repository.findAll(pageRequest);
-		return list.map(x -> new TecnicoDTO(x));
+	public Page<SetorDTO> findAllPaged(PageRequest pageRequest) {
+		Page<Setor> list = repository.findAll(pageRequest);
+		return list.map(x -> new SetorDTO(x));
 	}
 
 	@Transactional(readOnly = true)
-	public TecnicoDTO findById(Long id) {
-		Optional<Tecnico> obj = repository.findById(id);
-		Tecnico entity = obj
+	public SetorDTO findById(Long id) {
+		Optional<Setor> obj = repository.findById(id);
+		Setor entity = obj
 				.orElseThrow(() -> new ResourceNotFoundException("A entidade consultada não foi localizada"));
-		return new TecnicoDTO(entity);
+		return new SetorDTO(entity);
 	}
 
 	@Transactional
-	public TecnicoDTO insert(TecnicoDTO dto) {
-		Tecnico entity = new Tecnico();
+	public SetorDTO insert(SetorDTO dto) {
+		Setor entity = new Setor();
 		entity.setNome(dto.getNome());
+		entity.setSigla(dto.getSigla());
 		entity.setTelefone(dto.getTelefone());
 		entity.setEmail(dto.getEmail());
-		entity.setSenha(dto.getSenha());
+		entity.setCoordenador(dto.getCoordenador());
 		entity = repository.save(entity);
-		return new TecnicoDTO(entity);
+		return new SetorDTO(entity);
 	}
 
 	@Transactional
-	public TecnicoDTO update(Long id, TecnicoDTO dto) {
+	public SetorDTO update(Long id, SetorDTO dto) {
 		try {
-			Tecnico entity = repository.getById(id);
+			Setor entity = repository.getById(id);
 			entity.setNome(dto.getNome());
+			entity.setSigla(dto.getSigla());
 			entity.setTelefone(dto.getTelefone());
 			entity.setEmail(dto.getEmail());
-			entity.setSenha(dto.getSenha());
+			entity.setCoordenador(dto.getCoordenador());
 			entity = repository.save(entity);
-			return new TecnicoDTO(entity);
+			return new SetorDTO(entity);
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("O recurso com o ID = " + id + " não foi localizado");
 		}
