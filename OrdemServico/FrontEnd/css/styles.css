@@ -1,0 +1,37 @@
+.search {
+    padding: 15px;
+}
+
+#table-head {
+    padding-left: 15px !important;
+}
+
+.btnEditar,
+.btnExcluir {
+    outline: inherit;
+    border: none;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.btnEditar a {
+    color: #ffff;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #4353e6;
+}
+
+.btnExcluir a {
+    color: #ffff;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #e64343;
+}
+
+.descricao {
+    margin-top: 15px;
+}
+
+div.btnCadastrar {
+    margin-top: 15px;
+}

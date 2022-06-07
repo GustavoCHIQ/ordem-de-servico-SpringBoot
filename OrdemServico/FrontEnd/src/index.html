@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Sistema de Ordem de Serviço</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/styles.css">
+
+</head>
+
+<body>
+    <div>
+        <nav id="teste" class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Ordem de Serviço System</a>
+            <button class="navbar-toggler" type="button"></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Equipamentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pages/cadastrar.html">Cadastrar Serviço</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="search">
+                <h3>Consulta Serviço</h3>
+                <a href=""><i class="fa-thin fa-trash-can"></i></a>
+                <input class="form-control form-control-lg" type="text" placeholder="">
+            </div>
+            <div>
+                <table class="table">
+                    <thead id="table" class="thead-dark">
+                        <tr class="table-head">
+                            <th scope="col">ID</th>
+                            <th scope="col">Equipamento</th>
+                            <th scope="col">Setor</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Notebook TinkPad</td>
+                            <td>CEREL</td>
+                            <td>04/06/2022</td>
+                            <td>
+                                <button class="btnEditar"><a href="./pages/cadastrar.html"> <i
+                                            class="bi bi-pencil"></i></a></button>
+                                <button class="btnExcluir"><a href="#"><i class="bi bi-trash3"></i></a></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Projetor EPSON</td>
+                            <td>NUGED</td>
+                            <td>01/04/2022</td>
+                            <td>
+                                <button class="btnEditar"><a href="./pages/cadastrar.html"> <i
+                                            class="bi bi-pencil"></i></a></button>
+                                <button class="btnExcluir"><a href="#"><i class="bi bi-trash3"></i></a></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Teclado HP</td>
+                            <td>COEAD</td>
+                            <td>18/04/2022</td>
+                            <td>
+                                <button class="btnEditar"><a href="./pages/cadastrar.html"> <i
+                                            class="bi bi-pencil"></i></a></button>
+                                <button class="btnExcluir"><a href="#"><i class="bi bi-trash3"></i></a></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Computador All in One Daten</td>
+                            <td>COEAD</td>
+                            <td>18/04/2022</td>
+                            <td>
+                                <button class="btnEditar"><a href="./pages/cadastrar.html"> <i
+                                            class="bi bi-pencil"></i></a></button>
+                                <button class="btnExcluir"><a href="#"><i class="bi bi-trash3"></i></a></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Notebook Lenovo</td>
+                            <td>COMAT</td>
+                            <td>13/03/2022</td>
+                            <td>
+                                <button class="btnEditar"><a href="./pages/cadastrar.html"> <i
+                                            class="bi bi-pencil"></i></a></button>
+                                <button class="btnExcluir"><a href="#"><i class="bi bi-trash3"></i></a></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btnCadastrar">
+                    <a class="btn btn-primary" href="./pages/cadastrar.html" role="button">Cadastrar Serviço</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
