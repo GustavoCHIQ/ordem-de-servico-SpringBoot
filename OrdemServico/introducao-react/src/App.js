@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    valor1: '',
+    valor2: '',
+    resultado: ''
+  }
+
+  somar = () => {
+    const resultado = parseInt(this.state.valor1) + parseInt(this.state.valor2);
+    this.setState({ resultado: resultado });
+  }
+
+  render() {
+    return (
+      <>
+        <h1>Calculadora</h1>
+        <label>Valor 1</label>
+        <input type="text" value={this.state.valor1}
+          onChange={(e) => this.setState({ valor1: e.target.value })} />
+        <br />
+        <label>Valor 2</label>
+        <input type="text" value={this.state.valor2}
+          onChange={(e) => this.setState({ valor2: e.target.value })} />
+        <br />
+        <button onClick={this.somar}>Somar</button>
+        <p>O resultado é: {this.state.resultado}</p>
+      </>
+    );
+  }
 }
 
-export default App;
+export default App; // Exportar componente
